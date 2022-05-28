@@ -57,9 +57,38 @@ describe("POST /user router", () => {
         expect(res.body.error).toEqual("User already stored on db");
     });
 
-    test.todo("handles incorrect parsed body data");
+    test("handles incorrect parsed body data", async() => {
+        const incorrectUserForm = {
+            firstName : "",
+            secondName : "",
+            title: "a",
+            description: "short",
+            imageURL: "..UIOASIODASJkdklasj"
+        };
 
-    test.todo("handles missing body data");
+        const res = await request(app)
+            .post("/portfolio")
+            .type("form")
+            .send(incorrectUserForm);
+        
+        expect(res.status).toEqual(400)
+        expect(res.body.error).not.toBe(null);
+        expect(res.body.msg).toBe("Error with parsed data");
+        expect(res.body.error.length).toEqual(5);
+    });
+
+    test("handles missing body data", async() => {
+        const res = await request(app)
+            .post("/portfolio")
+            .type("form")
+            .send({})
+        
+        console.log(res.body)
+        expect(res.status).toEqual(400);
+        expect(res.body.error).not.toBe(null);
+        expect(res.body.msg).toBe("Error with parsed data");
+        expect(res.body.error.length).toEqual(5);
+    });
 
     test.todo("creates user in db");
 })
