@@ -9,12 +9,13 @@ const deleteUser = require("../controllers/deleteUser");
 
 // middlewares
 const oneOnDB = require("../middlewares/oneOnDB");
+const diffThanOneOnDB = require("../middlewares/diffThanOneOnDB");
 const userValidator = require("../middlewares/userValidator");
 
 // routes
 router.post("/portfolio", oneOnDB, userValidator, createUser);
-router.get("/portfolio");
-router.put("/portfolio");
-router.delete("/portfolio/:id");
+router.get("/portfolio", diffThanOneOnDB, getUser);
+router.put("/portfolio", diffThanOneOnDB, userValidator, editUser);
+router.delete("/portfolio", diffThanOneOnDB, deleteUser);
 
 module.exports = router

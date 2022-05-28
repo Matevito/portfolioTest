@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/", api);
 
-describe("POST /user router", () => {
+describe("POST /portfolio router", () => {
     let userTest;
 
     beforeAll(async() => {
