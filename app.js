@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // conect mongodb
+require("./mongoConfig");
 
 // routes handler
 app.use("/apiv1", apiRouterV1);
