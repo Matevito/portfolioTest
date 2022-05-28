@@ -1,6 +1,6 @@
 const User = require("../models/User");
 
-exports.default = async (req, res) => {
+const createUser = async (req, res) => {
     // build user obj
 
     // attemp to save user obj
@@ -13,3 +13,5 @@ exports.default = async (req, res) => {
         }
     })
 };
+
+module.exports = createUser

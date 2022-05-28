@@ -15,7 +15,47 @@ app.use(express.json());
 app.use("/", api);
 
 describe("POST /user router", () => {
-    test.todo("rejects req if there's a user in db");
+    let userTest;
+
+    beforeAll(async() => {
+        // setup db
+        await testDB();
+        userTest = {
+            firstName: "new Name",
+            secondName: "new SecondName",
+            title: "testing title",
+            description: "here comes a description of the portfolio",
+            imageURL: "TEST.COM.CO"
+        }
+    });
+    afterEach(async() => {
+        // clean db after each test
+        const dbData = await User.find({});
+        dbData.forEach(async(userStored) => {
+            await User.findByIdAndRemove(userStored._id);
+        });
+    });
+
+    test("rejects req if there's a user in db", async() => {
+        // setup requirements;
+        const userInDB = new User({
+            firstName: "testName",
+            secondName: "testSecondName",
+            title: "a basic title...",
+            description: "here comes a description of the portfolio",
+            imageURL: "TEST.COM.CO"
+        });
+        await userInDB.save();
+        
+        // test
+        const res = await request(app)
+            .post("/portfolio")
+            .type("form")
+            .send(userTest)
+        
+        expect(res.status).toEqual(401);
+        expect(res.body.error).toEqual("User already stored on db");
+    });
 
     test.todo("handles incorrect parsed body data");
 

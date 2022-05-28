@@ -8,12 +8,12 @@ const editUser = require("../controllers/editUser");
 const deleteUser = require("../controllers/deleteUser");
 
 // middlewares
-
+const oneOnDB = require("../middlewares/oneOnDB");
 
 // routes
-router.post("/portfolio");
+router.post("/portfolio", oneOnDB, createUser);
 router.get("/portfolio");
 router.put("/portfolio");
-router.delete("/portfolio");
+router.delete("/portfolio/:id");
 
 module.exports = router
