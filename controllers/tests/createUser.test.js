@@ -83,12 +83,23 @@ describe("POST /user router", () => {
             .type("form")
             .send({})
         
-        console.log(res.body)
         expect(res.status).toEqual(400);
         expect(res.body.error).not.toBe(null);
         expect(res.body.msg).toBe("Error with parsed data");
         expect(res.body.error.length).toEqual(5);
     });
 
-    test.todo("creates user in db");
+    test("creates user in db", async() => {
+        const res = await request(app)
+            .post("/portfolio")
+            .type("form")
+            .send(userTest);
+        
+        expect(res.status).toEqual(200)
+        expect(res.body.error).toEqual(null)
+
+        // check saved obj
+        const savedUser = await User.find({})
+        expect(savedUser[0].firstName).toEqual("new Name")
+    });
 })
