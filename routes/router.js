@@ -15,7 +15,7 @@ const userValidator = require("../middlewares/userValidator");
 // routes
 router.post("/portfolio", oneOnDB, userValidator, createUser);
 router.get("/portfolio", diffThanOneOnDB, getUser);
-router.put("/portfolio", diffThanOneOnDB, userValidator, editUser);
-router.delete("/portfolio", diffThanOneOnDB, deleteUser);
+//router.put("/portfolio", diffThanOneOnDB, userValidator, editUser);
+//router.delete("/portfolio", diffThanOneOnDB, deleteUser);
 
 module.exports = router
