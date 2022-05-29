@@ -10,12 +10,10 @@ const getUser = async(req, res) => {
         // get user timeline twitter data
         tweetsData = await TwitterClient.v1.userTimeline();
     } catch (err) {
-        console.log(err);
         return res.status(500).json({
             error: "Error fetching user data"
         });
     };
-    
     // structure data and send a response
     tweetsData = tweetsData._realData.map(tweet => {
         return {
@@ -27,9 +25,9 @@ const getUser = async(req, res) => {
             lang: tweet.lang
         }
     });
-    // response only sends the last 5 tweets of the acount
     if (tweetsData.length > 5 ) {
-        tweetsData.slice(1).slice(-5)
+        // response only sends the last 5 tweets of the acount
+        tweetsData = tweetsData.slice(1).slice(-5).reverse();
     };
 
     const responseObj = {

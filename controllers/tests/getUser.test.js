@@ -17,10 +17,60 @@ app.use("/", api);
 // mock twitter
 const { rest } = require("msw");
 const { setupServer } = require("msw/node");
-
+const twitterRoot = "https://api.twitter.com/1.1/statuses/user_timeline.json"
 const server = setupServer(
-    rest.get("*", (req, res, ctx) => {
-        return res(ctx.status(400), ctx.json({ error: "error fetching data"}));
+    rest.get(twitterRoot, (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json([
+            {
+                created_at: "a date",
+                _id: "tweetid",
+                full_text: "sixth",
+                source: "/source...",
+                user: {},
+                lang: "es"
+            },
+            {
+                created_at: "a date",
+                _id: "tweetid",
+                full_text: "fifth",
+                source: "/source...",
+                user: {},
+                lang: "es"
+            },
+            {
+                created_at: "a date",
+                _id: "tweetid",
+                full_text: "fourth",
+                source: "/source...",
+                user: {},
+                lang: "es"
+            },
+            {
+                created_at: "a date",
+                _id: "tweetid",
+                full_text: "third",
+                source: "/source...",
+                user: {},
+                lang: "es"
+            },
+            {
+                created_at: "a date",
+                _id: "second",
+                full_text: "this is the tweet",
+                source: "/source...",
+                user: {},
+                lang: "es"
+            },
+            {
+                created_at: "a date",
+                _id: "tweetid",
+                full_text: "first",
+                source: "/source...",
+                user: {},
+                lang: "es"
+            }
+        ] 
+        ))
     })
 )
 describe("GET /portfolio router", () => {
@@ -29,6 +79,8 @@ describe("GET /portfolio router", () => {
     beforeAll(async() => {
         // setup db
         await testDB();
+        // run mock twitter server
+        server.listen({onUnhandledRequest: 'bypass'})
 
         const usersObjs = getData();
         user1 = usersObjs[0];
@@ -45,8 +97,11 @@ describe("GET /portfolio router", () => {
         const usersObjs = getData();
         user1 = usersObjs[0];
         user2 = usersObjs[1];
-    });
 
+        // for twitter mock server
+        server.resetHandlers()
+    });
+    afterAll(() => server.close())
     test("handles no user on db", async() => {
         const res = await request(app)
             .get("/portfolio")
@@ -72,19 +127,25 @@ describe("GET /portfolio router", () => {
     });
     
     test("handles error fetching twitter data", async() => {
-        //todo default twitter response is negative
+        // set up mock twitter resp
         await user1.save();
-
-        // test
+        server.use(
+            rest.get(twitterRoot, (req, res, ctx) => {
+                return res(ctx.status(400), ctx.json({ error: "error fetching"}))
+            })
+        )
+        // test // default twitter resp is negative
         const res = await request(app)
             .get("/portfolio")
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/json')
 
-        //console.log(res.body)
+        expect(res.status).toBe(500);
+        expect(res.body.error).toBe("Error fetching user data")
     });
     test("returns user obj response", async() => {
         await user2.save();
+        // mock twitter res on top of document*
 
         const res = await request(app)
             .get("/portfolio")
@@ -95,7 +156,10 @@ describe("GET /portfolio router", () => {
         expect(res.body.error).toBe(null);
         expect(res.body.msg).toBe("send portfolio user data");
         expect(res.body.data.user.firstName).toBe("second user")
+
+        // res only sends last 5 tweets
+        expect(res.body.data.tweets.length).toBe(5);
+        // check tweets list order
+        expect(res.body.data.tweets[0].full_text).toBe("first")
     });
-    //todo
-    test.todo("handles more than 5 tweets on twitterdb")
 })
