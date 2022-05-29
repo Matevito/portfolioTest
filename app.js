@@ -5,8 +5,6 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-let port = process.env.PORT || 3000;
-
 // routes
 const apiRouterV1 = require("./routes/router.js")
 
