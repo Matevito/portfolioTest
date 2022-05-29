@@ -1,14 +1,45 @@
 const User = require("../models/User");
+const TwitterClient = require("../dependencies/twitterApi");
 
 const getUser = async(req, res) => {
-    // get user data on db
+    // attempt to get user data
+    let dbData;
+    let tweetsData;
+    try {
+        dbData = await User.findOne();
+        // get user timeline twitter data
+        tweetsData = await TwitterClient.v1.userTimeline();
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+            error: "Error fetching user data"
+        });
+    };
+    
+    // structure data and send a response
+    tweetsData = tweetsData._realData.map(tweet => {
+        return {
+            created_at: tweet.created_at,
+            id: tweet._id,
+            full_text: tweet.full_text,
+            source: tweet.source,
+            user: tweet.user,
+            lang: tweet.lang
+        }
+    });
+    // response only sends the last 5 tweets of the acount
+    if (tweetsData.length > 5 ) {
+        tweetsData.slice(1).slice(-5)
+    };
 
-    // get user data on twitter
-
-    // structure and send a response
+    const responseObj = {
+        tweets: tweetsData,
+        user: dbData
+    }
     res.json({
         error:null,
-        msg: "send portfolio user data"
+        msg: "send portfolio user data",
+        data: responseObj
     })
 };
 
