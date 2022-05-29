@@ -3,7 +3,7 @@ const User = require("../models/User");
 const editUser = async(req, res) => {
     const userOnDB = await User.findOne();
     if (!userOnDB){
-        res.satus(500).json({
+        return res.satus(500).json({
             error: "Error fetching user data"
         });
     };
