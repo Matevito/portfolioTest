@@ -77,6 +77,11 @@ The usage of the rest api is quite straigthforward. This principally because it 
 
 **3.4** Delete user from db
 
-## 4. Time taken to solve the test
+## 4. Time taken to solve the test 
+Technically it took me two days to complete the task. But building the api took me 7 hours with its corresponding test. The next day I spent it trying to solve how to deploy the app, writting the documentation and building a basic front-end using the api.
 
+The first day I spent it searching on how to use aws services cause I haven't done it before this test. The next day I decided to use serverless as a framework cause it gaved me the utility to use a serverless architecture on the app and I considered the test was easy to done to worry about working for the first time with a technology I haven't used before. But I was wrong: I spent an importan part of the day trying to solve a bugg I haven't looked before and haven't event started with the development of the test-suite. Because of this I decided on building an api using Express cause i had more experience using it and Mongodb as a database.
+
+The third day I built the api, as I explained before, but was having problems deploying the api for a aws cli problem. The next day I finally got the api deployed and built the documentation you are currently reading.
 ## 5. Contact
+If you want to contact me you can get links to my email, linkedIn on my [portfolio](www.mateodiazdev.com).
