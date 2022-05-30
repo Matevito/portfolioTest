@@ -67,15 +67,39 @@ The app requires you to have on your pc Nodejs to have access to npm. You need a
     send the app
 
 ## 3. Usage
-The usage of the rest api is quite straigthforward. This principally because it only contains one type of data on the database. The api can handle 4 routes that represent the crud most basic operations. However, beware that the api is built in a way that can only handle no user stored (for the create a user object on db) to at most one user on the database at the time. This is done with a middleware that checks previeously the controller of the routes wich data is in db to decide to continue or not. With this clear, lets continue with the explanation.
+The usage of the rest api is quite straigthforward. This principally because it only contains one type of data on the database. The api can handle 4 routes that represent the crud most basic operations. However, beware that the api is built in a way that can only handle no user stored (for the create a user object on db) to at most one user on the database at the time. This is done with a middleware that checks previously the controller of the routes wich data is in db to decide to continue or not. With this clear, lets continue with the explanation.
+
+All the following routes take for granted that you are making a call to the url where your app is deployed(be it locally or in aws). Also, all the following routes are stored on a router called '/apiv1'. Because of this, when we refer to to the '*root*' component on the routes, we are refering to the compination of the api url + apiv1 (URL/apiv1).
 
 **3.1** Create user
 
+    POST <root>/portfolio {
+        firstName,
+        secondName,
+        title,
+        description,
+        imageURL
+    }
+
 **3.2** Get user data
+
+    GET <root>/portfolio 
 
 **3.3** Edit user data
 
+    PUT <root>/portfolio {
+        firstName,
+        secondName,
+        title,
+        description,
+        imageURL
+    }
+
 **3.4** Delete user from db
+
+    DELETE <root>/portfolio 
+
+
 
 ## 4. Time taken to solve the test 
 Technically it took me two days to complete the task. But building the api took me 7 hours with its corresponding test. The next day I spent it trying to solve how to deploy the app, writting the documentation and building a basic front-end using the api.
