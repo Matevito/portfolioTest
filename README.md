@@ -1,9 +1,12 @@
-1. introduction
-Mongo db, Nodejs
+#  USER PORTFOLIO TEST
+This app consist on a basic api deployed on aws. The api can send user information stored on a database and his last 5 tweets and another route to change its values stored on a db. It also contains two more reates to create a user on db and to delete it. The most characteristic atribute of the app consist in that only let one user to be stored on db.
 
-2. technologies
+Is built using Nodejs (Express framework) and uses Mongodb(non-relational db) as a database.
+
+## 1. Technologies
 Javascript
-express,
+
+Express.js
 mongoose
 
 express-validator
@@ -19,16 +22,17 @@ cors
 helmet
 compression
 
-3. set up
-Nodejs, aws account and setup aws cli. git cli.
-    1. requirements
-    2. steps
+## 2. Set up
+### 2.1 requirements
+The app requires you to have on your pc Nodejs to have access to npm. You need also to have git to get to clone more easily this folder. It requires also to have installed the aws cli on your terminal. It also requries you to have a user and a set-up database on the atlas mongodb service. To have access to the twitter api you are required too to have a developer twitter account with its corresponding developer credentials.
+### 2.2 installation
+
     clone.
-    vaars...
+    vaars...<!--  -->
     set up aws steps
     send the app
 
-4. usage
+## 3. Usage
 
 
 5. total time
