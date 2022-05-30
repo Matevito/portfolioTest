@@ -6,10 +6,12 @@
     "start": "node app.js",
     "dev": "nodemon local.js",
     "test": "jest --watch",
+    "init-claudia": "claudia generate-serverless-express-proxy --express-module app",
     "create-api": "claudia create --handler lambda.handler --deploy-proxy-api --region us-east-2",
-    "update-api": "claudia update"   
+    "update-api": "claudia update"
   },
   "dependencies": {
+    "aws-serverless-express": "^3.4.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.18.1",

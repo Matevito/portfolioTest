@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "./.env"})
+if(process.env.NODE_ENV !== "deploy") require("dotenv").config({ path: "./.env"})
 const mongoose = require("mongoose");
 
 const mongoDB = process.env.DB_URL;
