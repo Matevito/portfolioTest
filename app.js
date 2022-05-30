@@ -31,6 +31,4 @@ app.use((err, req, res) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`api listening on port ${port}`);
-});
+module.exports = app;
