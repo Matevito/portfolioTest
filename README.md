@@ -54,20 +54,28 @@ The app requires you to have on your pc Nodejs to have access to npm. You need a
 
 **2.2.7** 
 
-**2.2.**
+**2.2.8**
 
-**2.2.**
+**2.2.9**
 
-**2.2.**
+**2.2.10**
 
-**2.2.**
+**2.2.11**
 
     vaars...<!--  -->
     set up aws steps
     send the app
 
 ## 3. Usage
+The usage of the rest api is quite straigthforward. This principally because it only contains one type of data on the database. The api can handle 4 routes that represent the crud most basic operations. However, beware that the api is built in a way that can only handle no user stored (for the create a user object on db) to at most one user on the database at the time. This is done with a middleware that checks previeously the controller of the routes wich data is in db to decide to continue or not. With this clear, lets continue with the explanation.
 
+**3.1** Create user
+
+**3.2** Get user data
+
+**3.3** Edit user data
+
+**3.4** Delete user from db
 
 ## 4. Time taken to solve the test
 
