@@ -3,7 +3,7 @@ This app consists on a basic API deployed on AWS (amazon web services). The API 
 
 It is built using NodeJS (Express framework) and MongoDB (non-relational db) as a database.
 
-You can give it a look to the portfolio on this [link](/todo:) or use directly the API with postman or the curl command to "https://szdiypnx37.execute-api.us-east-1.amazonaws.com/latest/apiv1/".
+You can give it a look to the portfolio on this [link](https://matevito.github.io/TestPortfolioFront/) or use directly the API with postman or the curl command to "https://szdiypnx37.execute-api.us-east-1.amazonaws.com/latest/apiv1/".
 
 ## 1. Technologies
 - [Javascript](https://www.javascript.com/) promamming lenguage principally used for the app.
