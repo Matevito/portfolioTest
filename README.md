@@ -1,31 +1,31 @@
 #  USER PORTFOLIO TEST
-This app consists on a basic API deployed on aws (amazon web services). The api can send user information stored on a database and his last 5 tweets and another route to change its values stored on a db. It also contains two more reates to create a user on db and to delete it. The most characteristic atribute of the app consist in that only let one user to be stored on db.
+This app consists on a basic API deployed on AWS (amazon web services). The API can send a user information stored on a database and his last 5 tweets, it can also change its values stored on a db and some more (performs the basic CRUD operations). The most characteristic attribute of the app consist in that only let one user to be stored on db at a time.
 
-Is built using Nodejs (Express framework) and uses Mongodb(non-relational db) as a database.
+It is built using NodeJS (Express framework) and MongoDB(non-relational db) as a database.
 
-You can give it a look to the portfolio on this [link](/todo:) or use directly the api with postman or the curl command to: https://szdiypnx37.execute-api.us-east-1.amazonaws.com/latest/apiv1/
+You can give it a look to the portfolio on this [link](/todo:) or use directly the API with postman or the curl command to "https://szdiypnx37.execute-api.us-east-1.amazonaws.com/latest/apiv1/".
 
 ## 1. Technologies
 - [Javascript](/https://www.javascript.com/) promamming lenguage principally used for the app.
-- [Express.js (Nodejs)](/https://expressjs.com/) framework the api is built with.
-- [Mongodb](/https://www.mongodb.com/) non realational database.
-- [mongoose](/https://mongoosejs.com/) library that handles the connection of the api with the Mongodb database.
+- [Express.js (NodeJS)](/https://expressjs.com/) framework the app is built with.
+- [Mongodb](/https://www.mongodb.com/) non relational database.
+- [mongoose](/https://mongoosejs.com/) library that handles the connection of the API with the MongoDB database.
 ---
 - [express-validator](/https://express-validator.github.io/docs/) validator library used to check the parsed bodies of the POST and PUT routes.
-- [twitter-api-v2](/https://www.npmjs.com/package/twitter-api-v2) library to handle calls for the twitter api.
-- [claudia](/https://claudiajs.com/tutorials/serverless-express.html) handles the proccess of deploying express apps on aws.
+- [twitter-api-v2](/https://www.npmjs.com/package/twitter-api-v2) library to handle calls to the twitter API.
+- [claudia](/https://claudiajs.com/tutorials/serverless-express.html) handles the process of deploying express apps on AWS.
 ---
--  [jest](/https://jestjs.io/) javascript testing framework.
--  [msw](/https://mswjs.io/) used to mock the calls for the twitter api on the set suite.
--  [supertest](/https://www.npmjs.com/package/supertest) library to make3 fake request to the api and test the results.
--  [mongodb-memory-server](/https://github.com/nodkz/mongodb-memory-server) builds a fake mongodb database for test porpouses.
+-  [jest](/https://jestjs.io/) JavaScript testing framework.
+-  [msw](/https://mswjs.io/) mock responses of the twitter API on the set suite.
+-  [supertest](/https://www.npmjs.com/package/supertest) library to make fake request to the api and test the results.
+-  [mongodb-memory-server](/https://github.com/nodkz/mongodb-memory-server) builds a fake MongoDB database for testing.
 ---
 - [React.js](/https://reactjs.org/) frontend framework where the portfolio page is built with.
-- [MaterialUI (MUI)](/https://mui.com/) CSS libraries to style quickly the one page portfolio.
+- [MaterialUI (MUI)](/https://mui.com/) CSS libraries to style quickly the one-page portfolio.
 
 ## 2. Set up
 ### 2.1 *requirements*
-The app requires you to have on your pc Nodejs to have access to npm. You need also to have git to get to clone more easily this folder. It requires also to have installed the aws cli on your terminal. It also requries you to have a user and a set-up database on the atlas mongodb service. To have access to the twitter api you are required too to have a developer twitter account with its corresponding developer credentials.
+The app requires you to have on your pc NodeJS to have access to npm. You need also to have git to get to clone more easily this folder. It requires too to have installed the AWS CLI on your terminal. It also requires you to have a user and a set-up database on the atlas MongoDB service. To have access to the twitter API you are required to have a developer twitter account with its corresponding developer credentials.
 ### 2.2 *installation*
 Instructions to get the app rolling!
 
@@ -41,13 +41,13 @@ Instructions to get the app rolling!
 
         npm install
 
-- **2.2.4** Create an .env file on the root of the proyect and set-up the following config values
+- **2.2.4** Create an .env file on the root of the project and set up the following config values
 
-        #on deploy is required the deploy value
+        # on deployment is required the 'deploy' value
         NODE_ENV=dev||deploy
 
         # db access url
-        DB_URL=<Url obtained on the atlas webpage were your deployed database is stored>
+        DB_URL=<Url obtained on the atlas webpage were your database is stored>
 
         # twitter keys. Obtained them on your dev twitter account
         API_key=<API key value>
@@ -55,7 +55,7 @@ Instructions to get the app rolling!
         TOKEN_=<Access token value>
         TOKEN_secret=<Access token secret>
 
-- **2.2.5** Run the app locally. Chose the first option for development pourposes and the second to just run the api.
+- **2.2.5** Run the app locally. Chose the first option for development purposes and the second to just run the API.
 
         npm run dev
         npm node
@@ -64,22 +64,23 @@ Instructions to get the app rolling!
 
         npm run test
 
-- **2.2.7** Create a user on aws
+- **2.2.7** Create a user on AWS
 
-    Go to the *aws* web page and on the *IAM console* create a user. Be sure to select in the options 'Programmatic access'. The claudia libreary requires three policies to work so remember too to give your user *AmazonAPIGatewayAdministrator*, *AWSLambda_FullAccess* and *IAMFullAccess* on the 'Attach policies' option. Once this is done you will receive a message telling that the proccess was successfull and an *Access key* and *secret key* values. Store them cause we wiull use them to configure the *aws cli* to deploy the API.
-    You can get a more detailed explanation of this [here](/https://medium.com/@johndyer24/simple-steps-to-deploy-an-express-server-to-aws-lambda-with-claudia-js-26c25f8745b5).
+    Go to the *AWS* web page and on the '*IAM console*' create a user. Be sure to select in the options 'Programmatic access'. The claudia library requires three policies to work so remember too to give your user *AmazonAPIGatewayAdministrator*, *AWSLambda_FullAccess* and *IAMFullAccess* on the 'Attach policies' option. Once this is done, you will receive a message telling that the process was successful and the user *Access key* and *secret key* values. Store these values in a safe place, because we will use them to configure the *AWS CLI* to deploy the API.
 
-- **2.2.8** Set the aws user on the aws cli
+    You can get a more detailed explanation of this process [here](/https://medium.com/@johndyer24/simple-steps-to-deploy-an-express-server-to-aws-lambda-with-claudia-js-26c25f8745b5).
+
+- **2.2.8** Set the AWS user on the CLI
 
         aws configure
         <introduce the access key and secret you previously obtained. It will also ask for the server you want to store the app, so feel free to use the best located for your preferences.>    
 
-    If you don't have the *aws cli* installed you can learn it [here](/https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html). One you have it set the user credentials you obtained previously.
+    If you don't have the *AWS CLI* installed, you can learn it [here](/https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
 
 - **2.2.9** Deploy the app using claudia
 
         npm run create-api --set-env <enviroment variables list>
-    if the proccess is successfull you will obtain a *claudia.json* file on the root of the project and the app deployed on aws. The terminal will give you the url where the api is placed so you can use it. If you want to store the api on a server different to *us-east-2*, go to the package.json file and on the script *create-api* change the value where the location is placed for the one of your preference.
+    if the process is successful you will obtain a *claudia.json* file on the root of the project and the app deployed on AWS. The terminal will give you the URL where the API is placed, so you can use it. If you want to store the API on a server different to *us-east-2*, go to the package.json file and on the script '*create-api*' change the value where the location is placed for the one of your preference.
 
 - **2.2.10** Update the api
 
@@ -88,9 +89,9 @@ Instructions to get the app rolling!
     If you have made changes to the app store this changes on production using the following command
 
 ## 3. Usage
-The usage of the rest api is quite straigthforward. This principally because it only contains one type of data on the database. The api can handle 4 routes that represent the crud most basic operations. However, beware that the api is built in a way that can only handle no user stored (for the create a user object on db) to at most one user on the database at the time. This is done with a middleware that checks previously the controller of the routes wich data is in db to decide to continue or not. With this clear, lets continue with the explanation.
+The usage of the rest API is quite straightforward. This principally because it only contains one type of data on the database. The API can handle 4 routes that represent the CRUD most basic operations. However, beware that the API is built in a way that can only handle one or no user stored (it will crash otherwise). This is done with a middleware that checks previously the controller of the routes which data is in db to decide to continue or not. With this clear, we can continue with the explanation.
 
-All the following routes take for granted that you are making a call to the url where your app is deployed(be it locally or in aws). Also, all the following routes are stored on a router called '/apiv1'. Because of this, when we refer to to the '*root*' component on the routes, we are refering to the compination of the api url + apiv1 (URL/apiv1).
+All the following routes take for granted that you are making a call to the URL where your app is deployed (be it locally or in AWS). Also, all the following routes are stored on a router called '/apiv1'. Because of this, when we refer to the 'root' component on the routes, we are referring to the combination of the API URL + apiv1 (URL/apiv1).
 
 **3.1** Create user
 
@@ -102,7 +103,7 @@ All the following routes take for granted that you are making a call to the url 
             imageURL
         }
 
-The route can only be called when there are no data stored on db. It will also handle errors and missing data of the request. You can give a look to some of the requirements of the stored data on the [USER MODEL](/https://github.com/Matevito/portfolioTest/blob/main/models/User.js) file.
+The route can only be called when there is no data stored on db. It will also handle errors and missing data of the request. You can give a look to some requirements of the stored data on the [USER MODEL](/https://github.com/Matevito/portfolioTest/blob/main/models/User.js) file.
 
 **3.2** Get user data
 
@@ -120,20 +121,20 @@ It returns the user data stored on db and some twitter information of the accoun
             imageURL
         }
 
-It changes the stored user object on db to the parsed user object. The id of the old object remains and no changes are made of the twitter account. So if you want to change them do it changing the env variables of the app. As the POST component it handles incorrect and missing data of the request.
+It changes the stored user object on db to the parsed user object. The ID of the old object remains, and no changes are made of the twitter account. So, if you want to change them, do it changing the env variables of the app. As the POST component, it handles incorrect and missing data of the request with the same middleware.
 
 **3.4** Delete user from db
 
         DELETE <root>/portfolio 
 
-It deletes the user stored in db. Cannot be called if in db is stored a user object different to 1.
+It deletes the user stored in db. Cannot be called if in db is stored a user object different to 1 (no users or more than one).
 
 ## 4. Time taken to solve the test and some insights
-Technically it took me two days to complete the task. But building the api took me 7 hours with its corresponding test. The next day I spent it trying to solve how to deploy the app, writting the documentation and building a basic front-end using the api.
+Technically, it took me two days to complete the task. Building the API took me 7 hours with its corresponding test with some breaks. The next day I spent it trying to solve how to deploy the app, writing the documentation and building a basic front-end using the API.
 
-The first day I spent it searching on how to use aws services cause I haven't done it before this test. The next day I decided to use serverless as a framework cause it gaved me the utility to use a serverless architecture on the app and I considered the test was easy to done to worry about working for the first time with a technology I haven't used before. But I was wrong: I spent an importan part of the day trying to solve a bugg I haven't looked before and haven't event started with the development of the test-suite. Because of this I decided on building an api using Express cause i had more experience using it and Mongodb as a database.
+The first day I spent it searching on how to use AWS services because I haven't done it before this test. The next day I decided to use serverless as a framework cause it gave me the utility to use a serverless architecture on the app and I considered the app was easy to done to worry about working for the first time with a technology I haven't used before. But I was wrong: I spent an important part of the day trying to solve a bug I haven't looked before and haven't even started with the development of the test-suite. Because of this, I decided on building an API using Express because I had more experience using it with MongoDB as a database.
 
-The third day I built the api, as I explained before, but was having problems deploying the api for a aws cli problem. The next day I finally got the api deployed and built the documentation you are currently reading.
+The third day I built the API, as I explained before, but was having problems deploying the API for an AWS CLI problem. The next day, I finally got the API deployed and built the documentation you are currently reading.
 
 ## 5. Contact
-If you want to contact me you can get links to my email, linkedIn on my [portfolio](www.mateodiazdev.com).
+If you want to contact me, you can get links to my email, LinkedIn on my [portfolio](www.mateodiazdev.com).
