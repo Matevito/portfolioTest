@@ -1,5 +1,5 @@
 #  USER PORTFOLIO TEST
-This app consists on a basic API deployed on AWS (amazon web services). The API can send a user information stored on a database and his last 5 tweets, it can also change its values stored on a db and some more (performs the basic CRUD operations). The most characteristic attribute of the app consist in that only let one user to be stored on db at a time.
+This app consists on a basic API deployed on AWS (amazon web services). The API can send a user information stored on a database and its last 5 tweets, it can also change its values stored on a db and more (performs the basic CRUD operations). The most characteristic attribute of the app consist in that only let one user to be stored on db at a time.
 
 It is built using NodeJS (Express framework) and MongoDB(non-relational db) as a database.
 
