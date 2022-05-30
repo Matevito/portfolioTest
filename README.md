@@ -1,27 +1,27 @@
 #  USER PORTFOLIO TEST
 This app consists on a basic API deployed on AWS (amazon web services). The API can send a user information stored on a database and its last 5 tweets, it can also change its values stored on a db and more (performs the basic CRUD operations). The most characteristic attribute of the app consist in that only let one user to be stored on db at a time.
 
-It is built using NodeJS (Express framework) and MongoDB(non-relational db) as a database.
+It is built using NodeJS (Express framework) and MongoDB (non-relational db) as a database.
 
 You can give it a look to the portfolio on this [link](/todo:) or use directly the API with postman or the curl command to "https://szdiypnx37.execute-api.us-east-1.amazonaws.com/latest/apiv1/".
 
 ## 1. Technologies
-- [Javascript](/https://www.javascript.com/) promamming lenguage principally used for the app.
-- [Express.js (NodeJS)](/https://expressjs.com/) framework the app is built with.
-- [Mongodb](/https://www.mongodb.com/) non relational database.
-- [mongoose](/https://mongoosejs.com/) library that handles the connection of the API with the MongoDB database.
+- [Javascript](https://www.javascript.com/) promamming lenguage principally used for the app.
+- [Express.js (NodeJS)](https://expressjs.com/) framework the app is built with.
+- [Mongodb](https://www.mongodb.com/) non relational database.
+- [mongoose](https://mongoosejs.com/) library that handles the connection of the API with the MongoDB database.
 ---
-- [express-validator](/https://express-validator.github.io/docs/) validator library used to check the parsed bodies of the POST and PUT routes.
-- [twitter-api-v2](/https://www.npmjs.com/package/twitter-api-v2) library to handle calls to the twitter API.
-- [claudia](/https://claudiajs.com/tutorials/serverless-express.html) handles the process of deploying express apps on AWS.
+- [express-validator](https://express-validator.github.io/docs/) validator library used to check the parsed bodies of the POST and PUT routes.
+- [twitter-api-v2](https://www.npmjs.com/package/twitter-api-v2) library to handle calls to the twitter API.
+- [claudia](https://claudiajs.com/tutorials/serverless-express.html) handles the process of deploying express apps on AWS.
 ---
--  [jest](/https://jestjs.io/) JavaScript testing framework.
--  [msw](/https://mswjs.io/) mock responses of the twitter API on the set suite.
--  [supertest](/https://www.npmjs.com/package/supertest) library to make fake request to the api and test the results.
--  [mongodb-memory-server](/https://github.com/nodkz/mongodb-memory-server) builds a fake MongoDB database for testing.
+-  [jest](https://jestjs.io/) JavaScript testing framework.
+-  [msw](https://mswjs.io/) mock responses of the twitter API on the set suite.
+-  [supertest](https://www.npmjs.com/package/supertest) library to make fake request to the api and test the results.
+-  [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server) builds a fake MongoDB database for testing.
 ---
-- [React.js](/https://reactjs.org/) frontend framework where the portfolio page is built with.
-- [MaterialUI (MUI)](/https://mui.com/) CSS libraries to style quickly the one-page portfolio.
+- [React.js](https://reactjs.org/) frontend framework where the portfolio page is built with.
+- [MaterialUI (MUI)](https://mui.com/) CSS libraries to style quickly the one-page portfolio.
 
 ## 2. Set up
 ### 2.1 *requirements*
@@ -68,14 +68,14 @@ Instructions to get the app rolling!
 
     Go to the *AWS* web page and on the '*IAM console*' create a user. Be sure to select in the options 'Programmatic access'. The claudia library requires three policies to work so remember too to give your user *AmazonAPIGatewayAdministrator*, *AWSLambda_FullAccess* and *IAMFullAccess* on the 'Attach policies' option. Once this is done, you will receive a message telling that the process was successful and the user *Access key* and *secret key* values. Store these values in a safe place, because we will use them to configure the *AWS CLI* to deploy the API.
 
-    You can get a more detailed explanation of this process [here](/https://medium.com/@johndyer24/simple-steps-to-deploy-an-express-server-to-aws-lambda-with-claudia-js-26c25f8745b5).
+    You can get a more detailed explanation of this process [here](https://medium.com/@johndyer24/simple-steps-to-deploy-an-express-server-to-aws-lambda-with-claudia-js-26c25f8745b5).
 
 - **2.2.8** Set the AWS user on the CLI
 
         aws configure
         <introduce the access key and secret you previously obtained. It will also ask for the server you want to store the app, so feel free to use the best located for your preferences.>    
 
-    If you don't have the *AWS CLI* installed, you can learn it [here](/https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+    If you don't have the *AWS CLI* installed, you can learn it [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
 
 - **2.2.9** Deploy the app using claudia
 
@@ -103,7 +103,7 @@ All the following routes take for granted that you are making a call to the URL 
             imageURL
         }
 
-The route can only be called when there is no data stored on db. It will also handle errors and missing data of the request. You can give a look to some requirements of the stored data on the [USER MODEL](/https://github.com/Matevito/portfolioTest/blob/main/models/User.js) file.
+The route can only be called when there is no data stored on db. It will also handle errors and missing data of the request. You can give a look to some requirements of the stored data on the [USER MODEL](https://github.com/Matevito/portfolioTest/blob/main/models/User.js) file.
 
 **3.2** Get user data
 
