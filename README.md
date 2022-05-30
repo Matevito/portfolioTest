@@ -137,4 +137,4 @@ The first day I spent it searching on how to use AWS services because I haven't 
 The third day I built the API, as I explained before, but was having problems deploying the API for an AWS CLI problem. The next day, I finally got the API deployed and built the documentation you are currently reading.
 
 ## 5. Contact
-If you want to contact me, you can get links to my email, LinkedIn on my [portfolio](www.mateodiazdev.com).
+If you want to contact me, you can get links to my email, LinkedIn on my [portfolio](https://www.mateodiazdev.com/).
